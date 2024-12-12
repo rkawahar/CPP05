@@ -1,42 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kawaharadaryou <kawaharadaryou@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 16:33:28 by kawaharadar       #+#    #+#             */
-/*   Updated: 2024/12/11 22:12:40 by kawaharadar      ###   ########.fr       */
+/*   Created: 2024/12/11 22:09:10 by kawaharadar       #+#    #+#             */
+/*   Updated: 2024/12/11 23:05:45 by kawaharadar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Bureaucrat.hpp"
+#include <iostream>
 
-class Form {
+class AForm;
+
+class Bureaucrat {
 	private:
 		const std::string	_name;
-		bool				_signed;
-		const int			_gradeToSign;
-		const int			_gradeToExecute;
-		Form();
+		int					_grade;
+		Bureaucrat();
 
 	public:
-		//Constructors and Destructor
-		Form(const std::string& name, int gradeToSign, int gradeToExecute);
-		~Form();
-		Form(const Form& other);
-		Form& operator=(const Form& other);
-	
-		//Getters
-		const std::string& getName() const;
-		bool getSigned() const;
-		int getGradeToSign() const;
-		int getGradeToExecute() const;
-
-		//Setters
-		void setSigned(bool isSigned);
+		Bureaucrat(const std::string& name, int grade);
+		~Bureaucrat();
+		Bureaucrat(const Bureaucrat& other);
+		Bureaucrat& operator=(const Bureaucrat& other);
 
 		class GradeTooHighException : public std::exception {
 			public:
@@ -48,9 +38,11 @@ class Form {
 				const char* what() const throw();
 		};
 
-		//Operators
-		friend std::ostream& operator<<(std::ostream& os, const Form& form);
-
-		//Methods
-		void beSigned(const Bureaucrat& bureaucrat);
+		const std::string& getName() const;
+		int getGrade() const;
+		void incrementGrade();
+		void decrementGrade();
+		void signForm(AForm& form);
+		void executeForm(AForm& form);
+		friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 };

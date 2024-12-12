@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kawaharadaryou <kawaharadaryou@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 16:33:28 by kawaharadar       #+#    #+#             */
-/*   Updated: 2024/12/11 22:12:40 by kawaharadar      ###   ########.fr       */
+/*   Created: 2024/12/11 22:06:49 by kawaharadar       #+#    #+#             */
+/*   Updated: 2024/12/11 22:39:36 by kawaharadar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 #include "Bureaucrat.hpp"
 
-class Form {
+class AForm {
 	private:
+		AForm();
 		const std::string	_name;
 		bool				_signed;
 		const int			_gradeToSign;
 		const int			_gradeToExecute;
-		Form();
 
 	public:
 		//Constructors and Destructor
-		Form(const std::string& name, int gradeToSign, int gradeToExecute);
-		~Form();
-		Form(const Form& other);
-		Form& operator=(const Form& other);
+		AForm(const std::string& name, int gradeToSign, int gradeToExecute);
+		virtual ~AForm();
+		AForm(const AForm& other);
+		AForm& operator=(const AForm& other);
 	
 		//Getters
 		const std::string& getName() const;
@@ -48,9 +48,15 @@ class Form {
 				const char* what() const throw();
 		};
 
+		class FormNotSignedException : public std::exception {
+			public:
+				const char* what() const throw();
+		};
+
 		//Operators
-		friend std::ostream& operator<<(std::ostream& os, const Form& form);
+		friend std::ostream& operator<<(std::ostream& os, const AForm& form);
 
 		//Methods
 		void beSigned(const Bureaucrat& bureaucrat);
+		virtual void execute(Bureaucrat const & executor) const = 0;
 };
