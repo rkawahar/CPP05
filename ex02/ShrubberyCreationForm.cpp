@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kawaharadaryou <kawaharadaryou@student.    +#+  +:+       +#+        */
+/*   By: rkawahar <rkawahar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 22:09:50 by kawaharadar       #+#    #+#             */
-/*   Updated: 2024/12/12 20:51:36 by kawaharadar      ###   ########.fr       */
+/*   Updated: 2024/12/29 18:44:07 by rkawahar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 		throw AForm::FormNotSignedException();
 	if (executor.getGrade() > this->getGradeToExecute())
 		throw AForm::GradeTooLowException();
-	std::ofstream ofs(this->_target + "_shrubbery");
+	std::ofstream ofs((this->_target + "_shrubbery").c_str());
 	ofs << "                       __                       " << std::endl;
 	ofs << "                 _____|  |_____                 " << std::endl;
 	ofs << "                |___        ___|                " << std::endl;
