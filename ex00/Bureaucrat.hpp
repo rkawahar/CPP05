@@ -6,7 +6,7 @@
 /*   By: kawaharadaryou <kawaharadaryou@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 23:25:08 by kawaharadar       #+#    #+#             */
-/*   Updated: 2024/12/05 22:55:00 by kawaharadar      ###   ########.fr       */
+/*   Updated: 2025/02/04 18:27:32 by kawaharadar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ class Bureaucrat {
 		int getGrade() const;
 		void incrementGrade();
 		void decrementGrade();
-		friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 };
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);

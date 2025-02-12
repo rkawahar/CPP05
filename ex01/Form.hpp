@@ -6,7 +6,7 @@
 /*   By: kawaharadaryou <kawaharadaryou@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:33:28 by kawaharadar       #+#    #+#             */
-/*   Updated: 2024/12/11 22:12:40 by kawaharadar      ###   ########.fr       */
+/*   Updated: 2025/02/06 06:32:35 by kawaharadar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ class Form {
 		};
 
 		//Operators
-		friend std::ostream& operator<<(std::ostream& os, const Form& form);
 
 		//Methods
 		void beSigned(const Bureaucrat& bureaucrat);
 };
+
+std::ostream& operator<<(std::ostream& os, const Form& form);
